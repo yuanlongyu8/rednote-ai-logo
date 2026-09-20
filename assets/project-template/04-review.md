@@ -1,5 +1,5 @@
 ---
-workflow_version: "1.0"
+workflow_version: "1.1"
 project_slug: "{{PROJECT_SLUG}}"
 project_name: "{{PROJECT_NAME}}"
 review_status: draft
@@ -40,6 +40,12 @@ created_at: "{{CREATED_AT}}"
 | Candidate | 32 px | 导航栏 | App 图标/头像 | 深色背景 | 单色打印 | 备注 |
 |---|---|---|---|---|---|---|
 | [ID] | 通过/失败 | 通过/失败 | 通过/失败/不适用 | 通过/失败 | 通过/失败 |  |
+
+## 两层检查
+
+| Candidate | 主体脱离背景是否成立 | 背景是否完整满幅 | 背景是否抢主体 | 两层比例与连接 | 组合是否需要专属适配 |
+|---|---|---|---|---|---|
+| [ID] | 通过/失败 | 通过/失败/不适用 | 通过/失败 | 通过/失败 | 是/否 + 说明 |
 
 ## 保留结论
 

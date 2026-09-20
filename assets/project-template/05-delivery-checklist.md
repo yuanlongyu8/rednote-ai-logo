@@ -1,5 +1,5 @@
 ---
-workflow_version: "1.0"
+workflow_version: "1.1"
 project_slug: "{{PROJECT_SLUG}}"
 project_name: "{{PROJECT_NAME}}"
 delivery_status: draft

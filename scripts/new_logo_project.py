@@ -14,6 +14,7 @@ SKILL_ROOT = Path(__file__).resolve().parents[1]
 TEMPLATE_ROOT = SKILL_ROOT / "assets" / "project-template"
 TEMPLATE_MAP = {
     "01-brief.md": "01-brief.md",
+    "layer-map.md": "layer-map.md",
     "02-directions.md": "02-directions.md",
     "03-calibration-log.md": "03-calibration-log.md",
     "04-review.md": "04-review.md",

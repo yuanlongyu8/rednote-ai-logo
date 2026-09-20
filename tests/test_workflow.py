@@ -68,6 +68,11 @@ class WorkflowTest(unittest.TestCase):
         self.assertEqual(result.returncode, 1)
         self.assertIn("[BLOCKED] intake", result.stdout)
 
+    def test_layer_map_requires_ready_status(self) -> None:
+        result = run(str(VALIDATE), str(self.project), "--gate", "layers")
+        self.assertEqual(result.returncode, 1)
+        self.assertIn("[BLOCKED] layers", result.stdout)
+
     def test_generation_gate_rejects_non_square_png(self) -> None:
         (self.project / "source/prd.md").write_text("# Product PRD\n", encoding="utf-8")
 
@@ -128,6 +133,9 @@ class WorkflowTest(unittest.TestCase):
             "| S01 | [待填写] | [待填写] | [待填写] | [待填写] |",
             "| S01 | source/prd.md | v1 | 是 | 测试来源 |",
         )
+
+        layer_map = self.project / "layer-map.md"
+        replace(layer_map, "layer_status: draft", "layer_status: ready")
 
         directions = self.project / "02-directions.md"
         replace(directions, "direction_status: draft", "direction_status: approved")

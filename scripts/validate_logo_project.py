@@ -18,6 +18,7 @@ GATE_ORDER = (
     "structure",
     "intake",
     "brief",
+    "layers",
     "directions",
     "generation",
     "selection",
@@ -25,6 +26,7 @@ GATE_ORDER = (
 )
 REQUIRED_FILES = (
     "01-brief.md",
+    "layer-map.md",
     "02-directions.md",
     "03-generation-log.jsonl",
     "03-calibration-log.md",
@@ -152,6 +154,18 @@ def validate_brief(root: Path) -> GateResult:
         ]
         if not rows:
             result.errors.append("01-brief.md: 来源索引中没有已填写的 Sxx 记录")
+    return result
+
+
+def validate_layers(root: Path) -> GateResult:
+    result = GateResult("layers")
+    path = root / "layer-map.md"
+    require_status(result, path, "layer_status", "ready")
+    if path.is_file():
+        text = path.read_text(encoding="utf-8")
+        for heading in ("## Reference Map", "## 主体图案层 Subject Mark", "## 背景层 Background / Base", "## 组合关系"):
+            if heading not in text:
+                result.errors.append(f"layer-map.md: 缺少章节 {heading}")
     return result
 
 
@@ -305,6 +319,7 @@ VALIDATORS = {
     "structure": validate_structure,
     "intake": validate_intake,
     "brief": validate_brief,
+    "layers": validate_layers,
     "directions": validate_directions,
     "generation": validate_generation,
     "selection": validate_selection,

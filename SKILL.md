@@ -22,15 +22,15 @@ description: Run an evidence-based, AI-assisted end-to-end logo design workflow 
 ## 启动
 
 1. 查找项目源文件、历史轮次、评审稿、Figma 目标和最新反馈。
-2. 建立“当前真相”：当前保留方案、背景/呈现层、禁改项、允许修改项、待确认项。
+2. 建立“当前真相”：当前保留的主体图案层、背景层、两层适用关系、禁改项、允许修改项和待确认项。
 3. 判断任务属于哪一段：新方向、局部修改、材质/配色校准、评审页、手机主屏、Figma 同步或正式交付。
 4. 只读取对应参考文件，不重新执行已完成阶段。
 
-开始任何设计判断前读 [小红书设计取向](references/xiaohongshu-taste.md)。
+开始任何设计判断前读 [两层设计方法论](references/design-methodology.md) 和 [小红书设计取向](references/xiaohongshu-taste.md)。用户只提供参考图时，不等待对方补充方法，主动完成 Reference Map 与 Layer Map 后推进。
 
 ## 路由
 
-- 从产品文档建立方向：读 [全流程与阶段门禁](references/workflow.md) 和 [设计规则](references/design-rules.md)。
+- 从参考图或产品文档建立方向：先读 [两层设计方法论](references/design-methodology.md)，再读 [全流程与阶段门禁](references/workflow.md) 和 [设计规则](references/design-rules.md)。
 - 生成新候选或编辑位图：读 [受控生成与局部修改](references/generation-and-editing.md)。
 - 用户在连续迭代中要求“再轻一点、位置不对、还是原图”等校准：读 [探索与校准经验](references/exploration-calibration.md)。
 - 搭建或更新 HTML 评审：读 [评审数据与执行](references/review-contract.md) 和 [场景、尺寸与内容评审](references/review-scenes.md)。
@@ -49,15 +49,17 @@ description: Run an evidence-based, AI-assisted end-to-end logo design workflow 
 
 ### 2. Frame
 
-- 将候选拆成基础图形、呈现层、场景层：
-  - 基础图形：轮廓、正负形、比例、节奏、产品含义。
-  - 呈现层：颜色、材质、背景、键帽或其他容器。
-  - 场景层：App icon、手机主屏、导航、单色和印刷。
+- 将 Logo 拆成两个顶层设计层：
+  - 主体图案层：产品语义、轮廓、正负形、比例、姿态和识别点。
+  - 背景层：底色、容器、键帽/键盘关系、纹理、材质、边界和承托层级。
+- 颜色与材质归入它实际作用的层；手机主屏、导航、单色和印刷属于验证场景，不是第三个设计层。
+- 先分别设计和确认两层，再建立适用组合；不能用背景和材质掩盖主体不足，也不能强迫所有主体复用同一载体。
 - 新方向必须在核心隐喻或构形机制上不同，不以换色冒充新方向。
 - 已有确认方案时，直接从其状态继续，不重新发散。
 
 ### 3. Explore or Edit
 
+- 新项目先探索主体图案层；主体成立后再固定主体、展开背景层。
 - 每批只改变一个主要变量；提示词写清产品常量、方向常量、本轮变量和禁改项。
 - 精确几何、位置、遮挡、颜色替换和局部材质优先使用确定性编辑；生成模型用于需要视觉探索的部分。
 - 生成或修改后实际查看结果。若模型改变了禁改区域，标记为失败探索，不继续在错误母版上累加。
@@ -69,7 +71,7 @@ description: Run an evidence-based, AI-assisted end-to-end logo design workflow 
 
 > 对象 — 位置 — 当前问题 — 期望变化 — 必须保留 — 禁止影响 — 验证场景
 
-默认只改一个主要变量。先核对局部叠图或像素差异，再查看整体。重复出现“变化看不出来”时，提高可见差异但仍保持平面关系；出现“设计关系丢失”时，立即退回已确认母版，撤掉材质或立体处理。
+先标明本轮对象属于 `subject`、`background`、`composition` 或 `context`，并固定其他部分。默认只改一个主要变量。先核对局部叠图或像素差异，再查看整体。重复出现“变化看不出来”时，提高可见差异但仍保持平面关系；出现“设计关系丢失”时，立即退回已确认母版，撤掉材质或立体处理。
 
 ### 5. Review
 
