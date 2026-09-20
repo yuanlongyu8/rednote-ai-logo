@@ -1,0 +1,21 @@
+{
+  "candidate_id": "DIR-01-C01",
+  "direction_id": "DIR-01",
+  "created_at": "2026-09-15T12:00:00+08:00",
+  "tool": "image-generation-tool",
+  "model": "model-and-version",
+  "prompt_version": "v1",
+  "prompt": "完整提示词，而不是摘要",
+  "batch_variable": "本批只改变的主要变量",
+  "input_references": [
+    {
+      "path_or_url": "source/reference.png",
+      "role": "mood-only",
+      "sha256": "如为本地文件则填写"
+    }
+  ],
+  "seed": null,
+  "output_path": "candidates/DIR-01-C01.png",
+  "output_sha256": "输出文件的 sha256",
+  "notes": "失败、偏差或值得保留的特征"
+}

@@ -1,0 +1,6 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><style>body{font:14px/1.6 system-ui;padding:16px}button,input{font:inherit;margin:8px 0}button{padding:10px}#status{white-space:pre-wrap}</style><h2>导入 Logo 评审</h2><p>在当前文件新增评审板。文字可编辑；Logo 与手机场景为位图。</p><input id="file" type="file" accept=".json,application/json"><p id="summary">选择网页导出的确认包。</p><button id="run" disabled>导入确认方案</button><p id="status" role="status"></p><script>
+let payload=null;const run=document.getElementById('run'),status=document.getElementById('status');
+document.getElementById('file').onchange=async e=>{payload=null;run.disabled=true;try{const f=e.target.files[0];if(!f)return;if(f.size>80*1024*1024)throw Error('文件过大，请分批导出');const p=JSON.parse(await f.text());if(p.schemaVersion!==1||!Array.isArray(p.items)||!p.items.length||p.items.length>30)throw Error('不是有效的 Logo 确认包');payload=p;document.getElementById('summary').textContent=p.project+' / '+p.revision+' / '+p.items.length+' 个确认方案';status.textContent='目标为当前打开的 Figma 文件。';run.disabled=false}catch(err){status.textContent=err.message}};
+run.onclick=()=>{run.disabled=true;status.textContent='正在导入…';parent.postMessage({pluginMessage:{type:'import',payload}},'*')};
+window.onmessage=e=>{const m=e.data.pluginMessage;if(!m)return;status.textContent=m.message;run.disabled=false};
+</script></html>

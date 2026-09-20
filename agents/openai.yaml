@@ -1,0 +1,4 @@
+interface:
+  display_name: "RedNote AI Logo"
+  short_description: "小红书内部 AI 驱动的 Logo 全流程设计、校准、评审与交付"
+  default_prompt: "使用 $rednote-ai-logo，先继承当前项目的已确认方案与历史校准，再完成本轮 Logo 设计、评审、手机主屏验证和必要的 Figma 交付。"
